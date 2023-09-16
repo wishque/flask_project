@@ -1,5 +1,6 @@
 from flask import Blueprint
 from utils.request import request_data
+from utils.response import success
 from . import services
 
 bp=Blueprint("user",__name__)
@@ -10,9 +11,17 @@ def add_user():
     username=params.get("username")
     password=params.get("password")
     data=services.add_user(username,password)
-    return data
+    return success(data)
 
 @bp.route("/",methods=["GET"])
 def list_user():
-    return services.get_user_list()
+    return success(services.get_user_list())
+
+@bp.route("/login",methods=["POST"])
+def login():
+    params=request_data()
+    username=params.get("username")
+    password=params.get("password")
+    result=services.login(username,password)
+    return success(result)
 

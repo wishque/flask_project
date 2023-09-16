@@ -3,7 +3,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from app import db
 
 class User(BaseModel):
-    username=db.Column(db.String(64))
+    username=db.Column(db.String(64),unique=True)
     password_hash=db.Column(db.String(128))
 
     @property
