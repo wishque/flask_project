@@ -13,6 +13,7 @@ def add_user(username,password):
     db.session.add(user)
     db.session.commit()
     data={
+        "id":user.id,
         "username":user.username
     }
     return data
@@ -24,6 +25,6 @@ def get_user_list():
 
 def login(username,password):
     user=User.query.filter(User.username==username).first()
-    if user is None or not user.check_password(password):
+    if not user or not user.check_password(password):
         raise errors.AuthError()
     return "this is token"
