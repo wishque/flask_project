@@ -1,16 +1,16 @@
 from flask import Blueprint
 from utils.request import request_data
 from utils.response import success
+from . import schemes
 from . import services
 
 bp=Blueprint("user",__name__)
 
 @bp.route("/",methods=["POST"])
 def add_user():
-    params=request_data()
-    username=params.get("username")
-    password=params.get("password")
-    data=services.add_user(username,password)
+    user=schemes.UserScheme()
+    args=user.load(request_data())
+    data=services.add_user(**args)
     return success(data)
 
 @bp.route("/",methods=["GET"])

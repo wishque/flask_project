@@ -1,6 +1,7 @@
 import os
+from pathlib import Path
 
-basedir=os.path.dirname(os.path.dirname(__file__))
+basedir=Path(os.path.dirname(os.path.dirname(__file__)))
 
 class Config:
     @staticmethod

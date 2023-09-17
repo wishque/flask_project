@@ -3,4 +3,4 @@ import os
 
 class DevelopmentConfig(Config):
     DEBUG=True
-    SQLALCHEMY_DATABASE_URI=f'sqlite:///{os.path.join(basedir,"debug.db")}'
+    SQLALCHEMY_DATABASE_URI=f'sqlite:///{basedir/"debug.db"}'
