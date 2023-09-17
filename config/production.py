@@ -16,11 +16,9 @@ class ProductionConfig(Config):
     @classmethod
     def init_app(cls,app):
         super().init_app(app)
-        logger=logging.getLogger("app")
         os.makedirs(cls.LOG_PATH,exist_ok=True)
         handler=TimedRotatingFileHandler(cls.LOG_PATH/"app.log",when="W0")
         formatter=Formatter("%(asctime)s|%(message)s")
         handler.setFormatter(formatter)
         handler.setLevel(getattr(logging,cls.LOG_LEVEL))
-        logger.addHandler(handler)
-
+        app.logger.addHandler(handler)

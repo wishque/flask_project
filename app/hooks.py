@@ -1,8 +1,8 @@
-from logger import logger
+from flask import current_app 
 
 def before_request_log():
-    logger.error("before request log")
+    current_app.logger.error("before request log")
 
 def after_request_log(response):
-    logger.error("after request log")
+    current_app.logger.error("after request log")
     return response
