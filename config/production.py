@@ -9,7 +9,12 @@ from .base import basedir
 class ProductionConfig(Config):
     DEBUG=False
     TESTING=False
-    SQLALCHEMY_DATABASE_URI=os.environ.get("DATABSE_URI")  or "sqlite:///app.db"
+
+    SQLALCHEMY_DATABASE_URI=os.environ.get("DATABSE_URI")  or f"sqlite:///{basedir/'app.db'}"
+
+    BROKER_URL='redis://localhost:6379/0'
+    RESULT_BACKEND='redis://localhost:6379/1'
+
     LOG_LEVEL=os.environ.get("LOG_LEVEL") or "INFO"
     LOG_PATH= basedir / (os.environ.get("LOG_PATH") or "logs/")
 

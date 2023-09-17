@@ -1,4 +1,5 @@
 from flask import Blueprint
+from app.common.auth import auth
 from utils.request import request_data
 from utils.response import success
 from . import services
@@ -14,6 +15,7 @@ def add_user():
     return success(data)
 
 @bp.route("/",methods=["GET"])
+@auth.login_required
 def list_user():
     return success(services.get_user_list())
 
