@@ -30,7 +30,6 @@ click-repl==0.3.0
 Faker==19.6.1
 Flask==2.3.3
 Flask-HTTPAuth==4.8.0
-Flask-Log-Request-ID==0.10.1
 Flask-Migrate==4.0.5
 Flask-SQLAlchemy==3.1.1
 greenlet==2.0.2

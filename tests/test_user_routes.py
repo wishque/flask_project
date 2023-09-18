@@ -1,9 +1,7 @@
 from app import errors
 from utils.response import error
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
 from flask.testing import FlaskClient
-from app.user.models import User
 
 def test_add_user(client:FlaskClient,faker:Faker):
     user=dict(username=faker.unique.name(),password=faker.password())
